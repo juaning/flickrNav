@@ -37,7 +37,7 @@
 		
 		function saveImg($img=null){
 			if(!isset($img)) return false;
-			$ssql = 'INSERT INTO image (url,title,creator,location,comments) VALUES (?,?,?,?,?)';
+			$ssql = 'INSERT INTO image (url,title,creator,comments) VALUES (?,?,?,?)';
 			$this->db->query($ssql,$img);
 			return $this->db->insert_id();
 		}

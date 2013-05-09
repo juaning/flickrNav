@@ -1,5 +1,8 @@
 Readme Flickr Nav
 
+To query flickr the parameter 'text' is used instead of tags or something else.
+Database sql with schema and some data can be found on assets/db
+
 Configurations:
 
 In 'path.to/flickrNav/application/config' set the following files:

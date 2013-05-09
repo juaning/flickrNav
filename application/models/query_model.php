@@ -25,8 +25,8 @@
 			if(!isset($data)){
 				return FALSE;
 			}
-			$ssql = 'INSERT INTO query (query, count,location) VALUES (? , ?, ?)';
-			$this->db->query($ssql,array($data['query'], $data['cc'], $data['location']));
+			$ssql = 'INSERT INTO query (query, count,lat,lon) VALUES (?, ?, ?, ?)';
+			$this->db->query($ssql,array($data['query'], $data['cc'], $data['lat'], $data['lon']));
 			return $this->db->insert_id();
 		}
     }
