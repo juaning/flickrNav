@@ -54,7 +54,17 @@
 				        url: "index.php/main/query",
 				        data: dataToSend,
 				        success: function(data){
-				            $('#result').html(data);
+				        	var decod = ($.parseJSON(data)).results;
+				        	$('#img_view_tb').html('<tr>');
+				        	var table = $('#img_view_tb > tbody:last');
+				        	decod.forEach(function(item,i){
+				        		if((i%5 == 0) && i>0) {table.append('</tr><tr>'); console.log('new line');}
+				        		table.append('<td><img src="'+item.url+'"/></td>');
+				        		console.log('stuffing');
+				        		// endTr = '';
+				        	})
+				        	table.append('</tr>');
+				            // $('#result').html(data);
 				        },
 				        error: function(){alert('Error: Please, try again later');}
 				    });
@@ -63,7 +73,7 @@
 		</script>
 		<style>
 			.ui-autocomplete-loading {
-				background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
+				background: white right center no-repeat;
 			}
 			#city { width: 25em; }
 		</style>
@@ -93,7 +103,7 @@
 			</table>
 		</div>
 		<div id="result">
-			
+			<table id="img_view_tb"><tr><td></td></tr></table>
 		</div>
 	</body>
 </html>

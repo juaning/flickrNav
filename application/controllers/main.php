@@ -69,18 +69,18 @@
 				$imgData = $this->getDataFromFlickr($saveData['query'],$saveData['lat'],$saveData['lon']);
 				if(!$this->image_model->save($query_id,$imgData)) return false;
 				//TODO: Add Images and pagination
-				// $config = array();
-		        // $config["base_url"] = base_url() . "main/";
-		        // $config["total_rows"] = count($imgData);
-		        // $config["per_page"] = 15;
-		        // $config["uri_segment"] = 3;
-		        // $this->pagination->initialize($config);
-// 						
-				// $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		        // $data["results"] = array_slice($imgData, $page, $config["per_page"]);
-		        // $data["links"] = $this->pagination->create_links();
-// 				
-				// print_r($data);
+				$config = array();
+		        $config["base_url"] = base_url() . "main/";
+		        $config["total_rows"] = count($imgData);
+		        $config["per_page"] = 15;
+		        $config["uri_segment"] = 3;
+		        $this->pagination->initialize($config);
+						
+				$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		        $response["results"] = array_slice($imgData, $page, $config["per_page"]);
+		        $response["links"] = $this->pagination->create_links();
+				
+				echo json_encode($response);
 				//TODO: Delete test images
 				// echo "<br />";
 				// for($i=0; $i<15; $i++){
