@@ -3,6 +3,8 @@
 	 * Main Controller
 	 * @author Ian Mignaco
 	 * @date 22-01-2014
+	 * http://www.sitepoint.com/the-mvc-pattern-and-php-1/
+	 * http://r.je/mvc-in-php.html
 	 */
 	class Main {
 		
