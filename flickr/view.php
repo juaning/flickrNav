@@ -23,8 +23,19 @@
 	}
 	 
 	class FlickrMainView {
-		function __construct(){
+		public function __construct(){
 			
+		}
+		
+		public function printDefaultHomeView() {
+			$view = new Template('views/mainView.php' , array(
+								'title' => 'Search Images on Flickr'
+								, 'messageCSS' => ''
+								, 'messageText' => ''
+								, 'form' => new Template('views/formView.php', array('searchTerm' => false))
+								, 'content' => false
+								));
+			$view->render();
 		}
 	}
 	
