@@ -5,10 +5,10 @@
 ?>
 <div id="imgList">
 	<ul>
-		<? foreach($this->photoList as $key => $photo): ?>
+		<?php foreach($this->photoList as $key => $photo): ?>
 			<li>
-				<a href="/single/<? $key; ?>" target="_blank"><img src="<? $photo['thumbnail']; ?>" alt="<? $photo['title']; ?>" /></a>
+				<a href="/single/<?php echo $key; ?>" target="_blank"><img src="<?php echo $photo['thumbnail']; ?>" alt="<?php echo $photo['title']; ?>" /></a>
 			</li>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 	</ul>
 </div>
