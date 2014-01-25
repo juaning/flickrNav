@@ -1,6 +1,6 @@
 <?php
     /**
-	 * Model for FlickrNav
+	 * Model for FlickrNav: manage the connection with flickr, and format results
 	 * @author Ian Mignaco
 	 */
 	class FlickrModel {

@@ -1,4 +1,8 @@
 <?php
+	/**
+	 * Landing page of the site, acts as router
+	 * @author Ian Mignaco
+	 */
     require_once('model.php');
     require_once('view.php');
 	

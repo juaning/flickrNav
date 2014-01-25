@@ -1,6 +1,7 @@
 <?php 
 	/**
 	 * Partial view for the search form
+	 * @author Ian Mignaco
 	 */
 ?>
 <div id="form">

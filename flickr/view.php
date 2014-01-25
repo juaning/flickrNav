@@ -1,6 +1,6 @@
 <?php
     /**
-	 * Flickr Nav View
+	 * Flickr Nav View: contains template and class to render the views and partials
 	 * @author Ian Mignaco
 	 */
 	class Template {
@@ -71,10 +71,6 @@
 									));
 			$this->view->render();
 		}
-	}
-	
-	class FlickrSingleImgView {
-		
 	}
 	
 ?>
