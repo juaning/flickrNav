@@ -1,6 +1,7 @@
 <html>
   <head>
     <title><?php echo $this->title; ?></title>
+    <link rel="stylesheet" type="text/css" href="/assets/main.css" media="screen" />
   </head>
   <body>
   	<h1><?php echo $this->title; ?></h1>

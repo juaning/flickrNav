@@ -2,7 +2,6 @@
     /**
 	 * Model for FlickrNav
 	 * @author Ian Mignaco
-	 * 22-01-2014
 	 */
 	class FlickrModel {
 		
@@ -10,6 +9,7 @@
 		private $curlHandler;
 		private $imgsData = array();
 		private $arrCleanImgs = array();
+		private $maxLengthTitle = 35;
         
       	public function __construct() {
         	$this->curlHandler = curl_init();
@@ -28,6 +28,7 @@
 			return array('thumbnail' => $photoUrl.'_m.jpg'
 				, 'large' => $photoUrl.'_b.jpg'
 				, 'title' => $photo['title']
+				, 'shortTitle' => substr($photo['title'], 0, $this->maxLengthTitle)
 				, 'creator' => $photo['owner']
 				, 'comments' => ''
 				);
@@ -52,12 +53,12 @@
 			if($this->imgsData['stat'] === 'ok') {
 				if($this->imgsData['photos']['total'] > 0){
 					$this->cleanPhotoResult($this->imgsData['photos']['photo']);
-					return true;
+					return array('success' => true);
 				} else {
-					return 'No images for search criteria';
+					return array('success' => false, 'msg' => 'No images for search criteria');
 				}
 			} else {
-				return 'There was an error with the API, please, try again later';
+				return array('success' => false, 'msg' => 'There was an error with the API, please, try again later');
 			}
 		}
 		

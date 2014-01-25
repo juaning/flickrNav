@@ -2,7 +2,6 @@
     /**
 	 * Flickr Nav View
 	 * @author Ian Mignaco
-	 * 22-01-2014
 	 */
 	class Template {
 	    private $args;
@@ -39,6 +38,18 @@
 			$this->view->render();
 		}
 		
+		public function renderErrorMessageView($searchTerm, $msg) {
+			$this->view = new Template('views/mainView.php' , array(
+								'title' => 'Search Images on Flickr - ' . $searchTerm
+								, 'messageCSS' => 'error'
+								, 'messageText' => $msg
+								, 'form' => new Template('views/formView.php', array('searchTerm' => $searchTerm))
+								, 'content' => false
+								, 'navigation' => false
+								));
+			$this->view->render();
+		}
+		
 		public function renderImgListView($searchTerm,$photos) {
 			$currentPage = $photos->getCurrentPage();
 			$totalPages = $photos->getPages();
@@ -51,7 +62,9 @@
 									, 'messageText' => 'Total results: ' . $photos->getTotalResults()
 									, 'form' => new Template('views/formView.php', array('searchTerm' => $searchTerm))
 									, 'content' => new Template('views/imageListView.php' , array('photoList' => $photos->getAllPhotos()))
-									, 'navigation' => new Template('views/navigationView.php' , array('prevL' => $prev
+									, 'navigation' => new Template('views/navigationView.php' , array(
+																									'prevL' => $prev
+																									, 'search' => $searchTerm
 																									, 'nextL' => $next
 																									, 'first' => 1
 																									, 'last' => $totalPages))

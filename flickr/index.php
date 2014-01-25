@@ -2,33 +2,28 @@
     require_once('model.php');
     require_once('view.php');
 	
-	function showResults($query, $searchModel, $page=1) {
+	function showResults($query, $searchView, $page=1) {
+		$searchModel = new FlickrModel();
 		$queryResult = $searchModel->getDataFromFlickr($query,$page);
-		if($queryResult){
+		if($queryResult['success']){
 			// Show the images
 			$searchView->renderImgListView($query, $searchModel);
 		} else {
 			// Show error message
+			$searchView->renderErrorMessageView($query,$queryResult['msg']);
 		}
 	}
     
-    $searchModel = new FlickrModel();
 	$searchView = new FlickrMainView();
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		// showResults($_POST['search'], $searchModel);
-		$queryResult = $searchModel->getDataFromFlickr($_POST['search'],$page);
-		if($queryResult){
-			// Show the images
-			$searchView->renderImgListView($_POST['search'], $searchModel);
-		} else {
-			// Show error message
-		}
+		showResults($_POST['search'], $searchView);
 	} else {
-		// if(isset($_GET('nav'))) {
-			// showResults($_POST['search'], $searchModel, $_GET('nav'));
-		// } else {
-			// $searchView->renderDefaultHomeView();
-		// }
-		$searchView->renderDefaultHomeView();
+		if(isset($_GET['nav']) && isset($_GET['search'])) {
+			showResults($_GET['search'], $searchView, $_GET['nav']);
+		} else if(isset($_GET['single'])) {
+			// Show single image
+		}else {
+			$searchView->renderDefaultHomeView();
+		}
 	}
 ?>
