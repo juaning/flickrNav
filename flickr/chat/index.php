@@ -20,7 +20,7 @@
 		</script>
 		<!-- Toolbar template -->
 		<script id="chatToolbarTpl" type="text/x-handlebars">
-			<input type="text" id="inputMsg" />
+			<input type="text" id="inputMsg" class="{{inputClass}}" />
 			<span class="button">{{btnText}}</span>
 		</script>
 		<!-- include scripts -->
